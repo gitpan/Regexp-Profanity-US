@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '0.7';
+our $VERSION = '0.8';
 
 our $re_opt = "i";
 
