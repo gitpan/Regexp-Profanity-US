@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 our $re_opt = "i";
 
@@ -323,7 +323,7 @@ __END__
 
 =head1 NAME
 
-Regexp::Profanity::US - Perl extension for blah blah blah
+Regexp::Profanity::US - Perl extension for detecting profanity 
 
 =head1 SYNOPSIS
 
