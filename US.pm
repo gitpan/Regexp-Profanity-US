@@ -7,7 +7,7 @@ use Carp qw(confess);
 
 require Exporter;
 
-use Regexp::Any;
+use Regexp::Match::Any;
 
 use Data::Dumper;
 
@@ -26,12 +26,9 @@ our %EXPORT_TAGS = ( 'all' => [ qw(
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
-our @EXPORT = qw(
-		 profane 
-		 profane_list
-		);
-
-our $VERSION = '0.6';
+our @EXPORT = qw(profane profane_list
+);
+our $VERSION = '0.7';
 
 our $re_opt = "i";
 
@@ -326,7 +323,7 @@ __END__
 
 =head1 NAME
 
-Regexp::Profanity::US - Perl extension for detecting profanity 
+Regexp::Profanity::US - Perl extension for blah blah blah
 
 =head1 SYNOPSIS
 
