@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 our $re_opt = "i";
 
@@ -94,6 +94,7 @@ sub profane_list {
 
 BEGIN {
     @definite = qw(
+
 asshole
 bitch
 bull-shit
@@ -154,6 +155,10 @@ nigger
 nigguh
 punk-ass
 punkass
+pussy-ass
+pussy_ass
+pussy\s*ass
+faggot
 eat-shit
 eat\s*shit
 suck-my-cock
@@ -174,11 +179,11 @@ turdhead
 
 
 
-
 );
 
 
     @ambiguous = qw(
+
 arse
 arsing
 ass-hole
@@ -304,6 +309,7 @@ wanker
 wankers
 wanking
 wanks
+
 
 )
 

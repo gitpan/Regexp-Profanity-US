@@ -40,8 +40,8 @@ $R = profane($string, 'definite');
 
 ok ($R, 0);
 
-$string = 'Java is a language for bitch-ass muthafuckas';
+$string = 'Java is a language for punk pussy-ass muthafuckas';
 
 $R = profane($string, 'definite');
 
-ok ($R, 'bitch');
+ok ($R, 'pussy-ass');

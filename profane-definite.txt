@@ -58,6 +58,9 @@ nigger
 nigguh
 punk-ass
 punkass
+pussy-ass
+pussy_ass
+pussy\s*ass
 faggot
 eat-shit
 eat\s*shit
