@@ -9,7 +9,7 @@ require Exporter;
 
 use Regexp::Any;
 
-use Data::Dumper;
+#use Data::Dumper;
 
 our @ISA = qw(Exporter);
 
@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 our $re_opt = "i";
 
@@ -88,7 +88,7 @@ sub profane_list {
 	push (@M, $1);
     }
 
-    return (scalar @M, @M);
+    return (@M);
 }
 
 
@@ -323,43 +323,16 @@ __END__
 
 =head1 NAME
 
-Regexp::Profanity::US - Perl extension for blah blah blah
+Regexp::Profanity::US - Perl extension for detecting profanity
 
 =head1 SYNOPSIS
 
   use Regexp::Profanity::US;
- sub proc {
 
-    my $string = shift;
-    my $degree = shift;
+  my $degree  = 'definite'; # or 'ambiguous';
 
-    my ($R, @M) = profane_list($string, $degree);
-
-    scalar @M > 7 and @M = @M[0..6];
-
-    my $i = 0;
-    tab_array;
-    for (@M) {
-	$tab_array[$i] = $M[$i++]
-    }
-
-    if ($R) {
-	++$counter{$degree};
-	$fh{$degree}->print("@tab_array\t$_");
-    }
-
-    $R
-
- }
-
- while (<B>) {
-
-    ++$line;
-
-    next if proc($_, 'definite');
-    proc($_, 'ambiguous');
-
- }
+  my @profane = profane_list($string, $degree);
+  my $profane = profane     ($string, $degree);
 
 
 =head1 DESCRIPTION
@@ -369,7 +342,7 @@ various degrees of profanity, per US standards.
 
 =head1 API
 
-=head2 $retval = profane($string, $degree)
+=head2 $profane_word = profane($string, $degree)
 
 Check C<$string> for profanity of degree C<$degree>, where
 $degree eq 'definite' or $degree eq 'ambiguous'
@@ -379,16 +352,10 @@ string.
 
 For negative matches, FALSE is returned.
 
-=head2 ($retval, @profane_words) = profane_list($string, $degree)
+=head2 @profane_word = profane_list($string, $degree)
 
-Same arguments. The sub returns:
-
-for positive matches, returns TRUE and all profane matches in a list, meaning
-
- (scalar @M, @M).
-
-for negative matches, return FALSE.
-
+The sub returns a list of all profane words found in C<$string>, or an
+empty list if none were found.
 
 
 =head1 EXPORT
@@ -397,9 +364,7 @@ C<profane()> and C<profane_list>
 
 =head1 DEPENDENCIES
 
-L<Regexp::Match::Any|Regexp::Match::Any> - by Scott McWhirter 
-from CPAN but modified locally with patches submitted
-to author. Version 0.04 or higher is required.
+L<Regexp::Any|Regexp::Any>
 
 =head1 OTHER
 
@@ -409,14 +374,15 @@ several issues with making practical use of it:
 
 =over
 
-=item Many of the profane words were of European origin and I did not
+=item * Many of the profane words were of European origin 
+
+I did not
 find them profane at all from an American standpoint. 
 
-=item I could not easily add profane words to that module. Without question,
-Abigail is a regular expression genius bar none, the edit cycle to use 
-the module would have required emailing him the changes. To make local changes
-for immediate use would have required doing character rotation on the 
-characters first.
+=item * I could not easily add profane words to that module
+
+It uses a rotated character set. I would be happy to roll
+this into L<Regexp::Common> if possible.
 
 
 
@@ -425,6 +391,6 @@ characters first.
 
 =head1 AUTHOR
 
-T. M. Brannon
+T. M. Brannon, tbone@cpan.org
 
 =cut

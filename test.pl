@@ -20,7 +20,7 @@ my $string = 'fuck off you shitty ass Python-using bitch';
 
 my $degree = 'definite';
 
-my ($R, @R) = profane_list($string, $degree);
+my @R = profane_list($string, $degree);
 
 ok (@R, 3);
 
@@ -28,7 +28,7 @@ use Data::Dumper;
 
 $degree = 'ambiguous';
 
-my ($R, @R) = profane_list($string, $degree);
+my @R = profane_list($string, $degree);
 
 ok (@R, 1);
 
