@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 our $re_opt = "i";
 
@@ -118,7 +118,6 @@ cocksucker
 cocksuckers
 cocksucking
 cocksucking
-crappy
 dick-head
 dickhead
 fuck
@@ -216,6 +215,7 @@ crapped
 crapper
 crappers
 crapping
+crappy
 craps
 crotch
 cuming
