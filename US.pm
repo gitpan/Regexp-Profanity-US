@@ -7,7 +7,7 @@ use Carp qw(confess);
 
 require Exporter;
 
-use Regexp::Match::Any;
+use Regexp::Any;
 
 use Data::Dumper;
 
@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '0.8';
+our $VERSION = '0.9';
 
 our $re_opt = "i";
 
