@@ -6,7 +6,7 @@
 # change 'tests => 1' to 'tests => last_test_to_print';
 
 use Test;
-BEGIN { plan tests => 3 };
+BEGIN { plan tests => 5 };
 use Regexp::Profanity::US;
 ok(1); # If we made it this far, we're ok.
 
@@ -16,13 +16,13 @@ ok(1); # If we made it this far, we're ok.
 # its man page ( perldoc Test ) for help writing this test script.
 
 
-my $string = 'fuck off you shitty ass bitch';
+my $string = 'fuck off you shitty ass Python-using bitch';
 
 my $degree = 'definite';
 
 my ($R, @R) = profane_list($string, $degree);
 
-ok (@R, 2);
+ok (@R, 3);
 
 use Data::Dumper;
 
@@ -34,3 +34,14 @@ ok (@R, 1);
 
 #die Dumper(\@R);
 
+$string = 'Every good boy does fine';
+
+$R = profane($string, 'definite');
+
+ok ($R, 0);
+
+$string = 'Java is a language for bitch-ass muthafuckas';
+
+$R = profane($string, 'definite');
+
+ok ($R, 'bitch');

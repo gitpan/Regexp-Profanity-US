@@ -28,7 +28,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw(profane profane_list
 );
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our $re_opt = "i";
 
@@ -53,7 +53,7 @@ sub profane {
     my $re   = match_any_and_capture($list{$degree}, $re_opt);
 
     if ($word =~ /($re)/) {
-	return (1, $1);
+	return ($1);
     }  else {
 	return (0);
     }
@@ -359,25 +359,28 @@ Regexp::Profanity::US - Perl extension for blah blah blah
 =head1 DESCRIPTION
 
 This module provides an API for checking strings for strings containing
-various degrees of profanity.
+various degrees of profanity, per US standards.
 
 =head1 API
 
-=head2 profane($string, $degree)
+=head2 $retval = profane($string, $degree)
 
 Check C<$string> for profanity of degree C<$degree>, where
 $degree eq 'definite' or $degree eq 'ambiguous'
 
-For positive matches, returns TRUE and the first matched in a list, meaning
- (1, $1)
-For negative matches, return FALSE.
+For positive matches, returns TRUE, with TRUE being the first match in the
+string.
 
-=head2 profane_list($string, $degree)
+For negative matches, FALSE is returned.
+
+=head2 ($retval, @profane_words) = profane_list($string, $degree)
 
 Same arguments. The sub returns:
 
 for positive matches, returns TRUE and all profane matches in a list, meaning
+
  (scalar @M, @M).
+
 for negative matches, return FALSE.
 
 
@@ -386,7 +389,7 @@ for negative matches, return FALSE.
 
 C<profane()> and C<profane_list>
 
-=head2 DEPENDENCIES
+=head1 DEPENDENCIES
 
 L<Regexp::Match::Any|Regexp::Match::Any> - by Scott McWhirter 
 from CPAN but modified locally with patches submitted
@@ -400,7 +403,7 @@ several issues with making practical use of it:
 
 =over
 
-=item many of the profane words were of European origin and I did not
+=item Many of the profane words were of European origin and I did not
 find them profane at all from an American standpoint. 
 
 =item I could not easily add profane words to that module. Without question,
